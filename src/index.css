@@ -1,0 +1,103 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 270 70% 10%;
+    --foreground: 240 10% 95%;
+
+    --card: 280 65% 25%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 280 65% 25%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 280 80% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 280 60% 20%;
+    --muted-foreground: 240 5% 85%;
+
+    --accent: 280 75% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 280 60% 30%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 280 80% 50%;
+
+    --radius: 1rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background-image: radial-gradient(circle at 30% 20%, rgba(138, 18, 217, 0.15) 0%, transparent 40%),
+                      radial-gradient(circle at 80% 70%, rgba(138, 18, 217, 0.1) 0%, transparent 40%);
+  }
+
+  input, textarea, button, select, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-opacity-20 bg-purple-800 backdrop-blur-md border border-purple-500/30 shadow-lg;
+  }
+  
+  .card-content {
+    @apply relative overflow-hidden rounded-2xl glass-panel transition-all duration-300 p-4 flex flex-col items-center justify-center gap-2;
+  }
+
+  .card-content::before {
+    content: '';
+    @apply absolute inset-0 bg-shimmer -translate-x-full;
+    animation: shimmer 3s infinite;
+  }
+  
+  .neon-text {
+    @apply font-bold tracking-wide;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7),
+                 0 0 10px rgba(174, 18, 217, 0.5),
+                 0 0 15px rgba(174, 18, 217, 0.3);
+  }
+  
+  .neon-border {
+    @apply border border-purple-400 rounded-lg;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7),
+                0 0 10px rgba(174, 18, 217, 0.5),
+                0 0 15px rgba(174, 18, 217, 0.3);
+  }
+  
+  .btn-open {
+    @apply px-6 py-2 rounded-full border border-white/50 
+           bg-purple-600/50 text-white font-medium 
+           transition-all duration-300 backdrop-blur-sm
+           hover:bg-purple-500/60 hover:border-white/80 
+           active:scale-95 focus:outline-none focus:ring-2 
+           focus:ring-purple-400/50 focus:ring-offset-2 focus:ring-offset-purple-900;
+  }
+  
+  .nav-btn {
+    @apply flex flex-col items-center justify-center px-6 py-3 
+           text-white/80 transition-all duration-300
+           hover:text-white active:text-purple-300;
+  }
+  
+  .nav-btn.active {
+    @apply text-white;
+  }
+}
