@@ -28,7 +28,7 @@ const Card: React.FC<CardProps> = ({ logo, name, className, delay = 0 }) => {
       
       <h3 className="text-lg font-medium text-white mb-2 neon-text">{name}</h3>
       
-      <button className="btn-open text-sm">
+      <button onClick={handleOpen} className="btn-open text-sm">
         OPEN
       </button>
     </div>
